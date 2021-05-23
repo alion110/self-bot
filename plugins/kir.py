@@ -9,7 +9,7 @@ async def kirekhar(client, message):
     await client.delete_messages(message.chat.id, message.message_id)
 
 @app.on_message(filters.me & filters.command(['count'], ['/','!','+','-',''])
-async def kirekhart(client, message):
+def beshamr32(client, message):
     for i in range(1, 11):
         await client.send_message(message.chat.id, str(i))
 
