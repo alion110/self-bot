@@ -8,8 +8,5 @@ async def kirekhar(client, message):
         await client.send_message(message.chat.id, message.text.split('kir')[1].split('=')[0] , reply_to_message_id=message.reply_to_message.message_id)
     await client.delete_messages(message.chat.id, message.message_id)
 
-@app.on_message(filters.me & filters.command(['count'], ['/','!','+','-',''])
-def beshamr32(client, message):
-    for i in range(1, 11):
-        await client.send_message(message.chat.id, str(i))
+
 
