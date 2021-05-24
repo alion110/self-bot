@@ -20,11 +20,15 @@ async def fid(client, message):
     
 @app.on_message(filters.me & filters.command(['send'],['/','!','+','-','','*','~','#','$','']))
 async def send_by_file_id(client, message):
-    what = 'sticker' #message.text.split('-')[1].split(' ')[0]
-    send_id = message.text.split(' ')[1]
+    what = message.text.split(' ')[1].split(' ')[0]
+    send_id = message.text.split(' ')[2]
     print(what, send_id)
     if what == 'sticker':
         await client.send_sticker(message.chat.id, send_id)
+    if what == 'gif':
+        await client.send_animation(message.chat.id, send_id)
+
+
 
 
 
