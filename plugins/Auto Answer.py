@@ -1,6 +1,6 @@
 from pyrogram import Client as app , filters
 import json, time,asyncio
-from pyromod import listen
+#from pyromod import listen
 last = time.time()
 def bla(sec):
     asyncio.sleep(sec)
