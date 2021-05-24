@@ -15,7 +15,7 @@ async def databasing(client, message):
                 T = data["autoanswer"][id]
                 text += f'[{id}](tg://user?id={id}) : {T} \n'
             await client.send_message(message.chat.id, text, reply_to_message_id=message.message_id)
-        if 'set_auto' in message.text:
+        '''if 'set_auto' in message.text:
             user = message.from_user.id
             await client.edit_message_text(message.chat.id, message.message_id, '__Wait for GIF or Sticker ...__')
             waiting_for_message = await client.listen(message.chat.id, timeout=40)
@@ -28,7 +28,7 @@ async def databasing(client, message):
             data['auto'][file_type][user] = file_id
             with open('users.json', 'w', encoding='utf8') as jsonfile:
                 json.dump(data, jsonfile, indent=4)
-            await client.edit_message_text(message.chat.id, message.message_id, f'__Auto answer with this {file_type} enabled for this user :)__')
+            await client.edit_message_text(message.chat.id, message.message_id, f'__Auto answer with this {file_type} enabled for this user :)__')'''
         if 'auto' in message.text and 'set' not in message.text:
             answer = message.text.split('auto')[1]
             for i in data["autoanswer"]:
