@@ -18,7 +18,7 @@ async def databasing(client, message):
         if 'set_auto' in message.text:
             user = message.from_user.id
             await client.edit_message_text(message.chat.id, message.message_id, '__Wait for GIF or Sticker ...__')
-            waiting_for_message = await client.listen(message.chat.id, timeout=40)
+            waiting_for_message = await Client.listen(message.chat.id, timeout=40)
             file_type = animation if waiting_for_message.animation else sticker
             file_id = waiting_for_message.file_type.file_id
             if str(user) in data['auto']['sticker']:
