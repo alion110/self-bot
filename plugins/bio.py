@@ -5,8 +5,8 @@ async def bla(sec):
     await asyncio.sleep(sec)
 
 biochi = True
-@app.on_message()
-async def bioauto(client):
+@app.on_message(filters.group)
+async def bioauto(client, message):
     while biochi:
         emojies = ['🌵', '🌱', '🌾', '🪐', '☄', '✨', '🔥', '💥', '🌪', '🌟', '🌎', '🌙', '🧘,','🏽','‍♂', '🎧', '🎤', '🎸', '🎮',
                    '🎯', '♟', '🎙', '💣', '⚔️', '🗡', '🔮', '📿', '💊', '🧬', '🖤']
