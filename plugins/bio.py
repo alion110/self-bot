@@ -6,7 +6,7 @@ async def bla(sec):
 
 biochi = True
 @app.on_message()
-async def bioauto(client, message):
+async def bioauto(client):
     while biochi:
         emojies = ['🌵', '🌱', '🌾', '🪐', '☄', '✨', '🔥', '💥', '🌪', '🌟', '🌎', '🌙', '🧘,','🏽','‍♂', '🎧', '🎤', '🎸', '🎮',
                    '🎯', '♟', '🎙', '💣', '⚔️', '🗡', '🔮', '📿', '💊', '🧬', '🖤']
