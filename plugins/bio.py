@@ -16,7 +16,6 @@ async def bioauto(client, message):
         if not biochi:
             break
         await asyncio.sleep(60)
-bioauto(app,message)
 
 @app.on_message(filters.me & filters.command(['startbio', 'bio'],['/','!','+','-','','*','~','#','$'])) #Change Biography every 60 seconds !
 async def strtbio(client, message):
