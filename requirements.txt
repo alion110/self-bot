@@ -2,3 +2,4 @@ pyrogram
 pillow
 requests
 pyromod
+tgcrypto
