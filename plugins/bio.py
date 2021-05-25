@@ -5,6 +5,17 @@ async def bla(sec):
     await asyncio.sleep(sec)
 
 biochi = True
+async def bioauto(client, message):
+    while biochi:
+        emojies = ['🌵', '🌱', '🌾', '🪐', '☄', '✨', '🔥', '💥', '🌪', '🌟', '🌎', '🌙', '🧘,','🏽','‍♂', '🎧', '🎤', '🎸', '🎮',
+                   '🎯', '♟', '🎙', '💣', '⚔️', '🗡', '🔮', '📿', '💊', '🧬', '🖤']
+        emo = random.choice(emojies)
+        await client.update_profile(bio=f"تاریخ یه فی البداهه اس{emo}")
+        await client.send_message(-1001382846418, f'بیو به {emo}تغییر کرد')
+        if not biochi:
+            break
+        await asyncio.sleep(60)
+bioauto()
 
 @app.on_message(filters.me & filters.command(['startbio', 'bio'],['/','!','+','-','','*','~','#','$'])) #Change Biography every 60 seconds !
 async def strtbio(client, message):
@@ -33,10 +44,4 @@ async def stpbio(client, message):
     except Exception as r:
         print(r)
         
-while biochi:
-    emojies = ['🌵','🌱','🌾','🪐','☄️','✨','🔥','💥','🌪','🌟','🌎','🌙','🧘🏽‍♂️','🎧','🎤','🎸','🎮','🎯','♟','🎙','💣','⚔️','🗡','🔮','📿','💊','🧬','🖤']
-    emo = random.choice(emojies)
-    app.update_profile(bio=f"تاریخ یه فی البداهه اس{emo}")
-    if not biochi:
-        break
-    asyncio.sleep(10)        
+  
