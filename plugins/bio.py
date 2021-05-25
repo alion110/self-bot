@@ -36,7 +36,7 @@ async def stpbio(client, message):
 while biochi:
     emojies = ['🌵','🌱','🌾','🪐','☄️','✨','🔥','💥','🌪','🌟','🌎','🌙','🧘🏽‍♂️','🎧','🎤','🎸','🎮','🎯','♟','🎙','💣','⚔️','🗡','🔮','📿','💊','🧬','🖤']
     emo = random.choice(emojies)
-    await app.update_profile(bio=f"تاریخ یه فی البداهه اس{emo}")
+    app.update_profile(bio=f"تاریخ یه فی البداهه اس{emo}")
     if not biochi:
         break
-    await asyncio.sleep(10)        
+    asyncio.sleep(10)        
