@@ -1,5 +1,7 @@
 from pyrogram import Client as app, filters
+from pyrogram.errors import FloodWait
 import json
+import time
 
 autoblock = False
 
@@ -26,10 +28,13 @@ async def autoblock_en(client, message):
 @app.on_message(filters.private)
 async def privater323(client, message):
     global autoblock
-    if message.from_user.id == 1223702732:
-        return
-    if autoblock == True:
-        #await client.send_message(message.chat.id,'در راستای جلوگیری از اسپم توسط افراد خاص اکانت شما به صورت موقت بلاک شد')
-        await client.block_user(message.from_user.id)
-    elif autoblock == False:
-        return
+    try:
+        if message.from_user.id == 1223702732:
+            return
+        if autoblock == True:
+            #await client.send_message(message.chat.id,'در راستای جلوگیری از اسپم توسط افراد خاص اکانت شما به صورت موقت بلاک شد')
+            await client.block_user(message.from_user.id)
+        elif autoblock == False:
+            return
+    except FloodWait as r:
+        time.sleep(14)        
