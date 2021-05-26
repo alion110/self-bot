@@ -37,4 +37,4 @@ async def privater323(client, message):
         elif autoblock == False:
             return
     except FloodWait as r:
-        time.sleep(14)        
+        time.sleep(r.x)        
