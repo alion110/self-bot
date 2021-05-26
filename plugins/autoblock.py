@@ -4,7 +4,8 @@ with open('users.json', 'r', encoding='utf-8') as jsonfile:
     data = json.load(jsonfile)
 if data['autoblock'] == 1:
     autoblock = True
-else: autoblock = False
+else:
+    autoblock = False
 
 @app.on_message(filters.me & filters.command(['ablock'], ['']))
 async def autoblock_en(client, message):
@@ -23,6 +24,8 @@ async def autoblock_en(client, message):
 async def privater323(client, message):
     if message.from_user.id == 1223702732:
         return
-    if autoblock:
+    if autoblock == True:
         await client.send_message(message.chat.id,'در راستای جلوگیری از اسپم توسط افراد خاص اکانت شما به صورت موقت بلاک شد')
         await client.block_user(message.from_user.id)
+    elif autoblock == False:
+        return
