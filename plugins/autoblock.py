@@ -1,4 +1,4 @@
-from pyrogram import Client as ap, filters
+from pyrogram import Client as app, filters
 import json
 with open('users.json', 'r', encoding='utf-8') as jsonfile:
     data = json.load(jsonfile)
