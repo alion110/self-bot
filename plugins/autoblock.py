@@ -1,6 +1,7 @@
 from pyrogram import Client as app, filters
 import json
 
+autoblock = False
 
 
 @app.on_message(filters.me & filters.command(['ablock'], ['']))
@@ -24,6 +25,7 @@ async def autoblock_en(client, message):
 
 @app.on_message(filters.private)
 async def privater323(client, message):
+    global autoblock
     if message.from_user.id == 1223702732:
         return
     if autoblock == True:
