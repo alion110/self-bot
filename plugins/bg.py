@@ -17,7 +17,7 @@ async def remove_bg(client, message):
                 'https://api.remove.bg/v1.0/removebg',
                 files={'image_file': open('downloads/bg.jpg', 'rb')},
                 data={'size': 'auto'},
-                headers={'X-Api-Key': 'bUWfr8urQEjrV9fmcxWYVKX3'},
+                headers={'X-Api-Key': 'nRG1x3QJwR3ghABkeJWiyiia'},
             )
             if response.status_code == requests.codes.ok:
                 with open('no-bg.png', 'wb') as out:
