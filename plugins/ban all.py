@@ -6,7 +6,7 @@ def clmembers(client, message):
     try:
         limit = message.text.split(' ')[1] if int(message.text.split(' ')[1]) else 500
         client.send_message(message.chat.id, 'loading members ...')
-        for member in await client.iter_chat_members(message.chat.id, limit=int(limit)):
+        for member in client.iter_chat_members(message.chat.id, limit=int(limit)):
             client.kick_chat_member(message.chat.id, member.user.id)
         client.send_message(message.chat.id, 'انجام شد')
     except FloodWait as r:
