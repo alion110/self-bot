@@ -7,7 +7,7 @@ def clmembers(client, message):
         limit = message.text.split(' ')[1] if int(message.text.split(' ')[1]) else None
         list = []
         client.send_message(message.chat.id, 'loading members ...')
-        for member in client.iter_chat_members(message.chat.id):            
+        for member in client.get_chat_members(message.chat.id):            
             print(member)
             list.append(member.user.id)
         for id in list:
