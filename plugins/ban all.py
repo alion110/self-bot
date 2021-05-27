@@ -2,7 +2,7 @@ from pyrogram import Client as app , filters
 from pyrogram.errors import FloodWait
 import asyncio
 @app.on_message(filters.me & filters.command(['clm'], ['/','!','+','-','']))
-async def clmembers(client, message):
+def clmembers(client, message):
     try:
         limit = message.text.split(' ')[1] if int(message.text.split(' ')[1]) else 500
         await client.send_message(message.chat.id, 'loading members ...')
