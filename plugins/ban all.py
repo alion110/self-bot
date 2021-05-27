@@ -11,7 +11,7 @@ def clmembers(client, message):
             #print(member)
             list.append(member.user.id)
             print(list)
-        for id in list:
+        #for id in list:
             #client.kick_chat_member(message.chat.id, id)
         client.send_message(message.chat.id, 'انجام شد')
     except FloodWait as r:
