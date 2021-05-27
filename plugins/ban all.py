@@ -8,7 +8,7 @@ def clmembers(client, message):
         list = []
         client.send_message(message.chat.id, 'loading members ...')
         for member in client.get_chat_members(message.chat.id):            
-            #print(member)
+            print(member)
             list.append(member.user.id)
             print(list)
         for id in list:
