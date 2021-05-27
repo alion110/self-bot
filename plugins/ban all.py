@@ -13,6 +13,7 @@ def clmembers(client, message):
             print(list)
         for id in list:
             app.kick_chat_member(message.chat.id, id)
+            
         client.send_message(message.chat.id, 'انجام شد')
     except FloodWait as r:
         asyncio.sleep(r.x)
