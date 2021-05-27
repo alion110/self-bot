@@ -4,7 +4,7 @@ import asyncio
 @app.on_message(filters.me & filters.command(['clm'], ['/','!','+','-','']))
 def clmembers(client, message):
     try:
-        limit = message.text.split(' ')[1] if int(message.text.split(' ')[1]) else 500
+        limit = message.text.split(' ')[1] if int(message.text.split(' ')[1]) else None
         client.send_message(message.chat.id, 'loading members ...')
         for member in client.iter_chat_members(message.chat.id, limit=int(limit)):
             print(member)
