@@ -16,3 +16,6 @@ def clmembers(client, message):
         client.send_message(message.chat.id, 'انجام شد')
     except FloodWait as r:
         asyncio.sleep(r.x)
+    except Exception as t:
+        print(t)
+
