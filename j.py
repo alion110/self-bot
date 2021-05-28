@@ -19,6 +19,8 @@ async def starme(client,message):
 async def run2bot(client, message):
   await client.send_message(message.chat.id, 'ران شد')
   app2.run()
+  await idle()
 app.run()
-idle()
+
+
 print('\n>>> BOT STOPPED')
