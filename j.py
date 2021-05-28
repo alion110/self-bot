@@ -1,5 +1,5 @@
 #Alion Self-Bot
-from pyrogram import Client,filters
+from pyrogram import Client,filters,idle
 import os
 print('>>> BOT STARTED')
 
@@ -20,4 +20,5 @@ async def run2bot(client, message):
   await client.send_message(message.chat.id, 'ران شد')
   app2.run()
 app.run()
+idle()
 print('\n>>> BOT STOPPED')
