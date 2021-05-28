@@ -9,7 +9,7 @@ app = Client("bot",api_id=4109627,api_hash='5874fe255bec03272faaa41ac22e55dc',co
 #app2.run()
 @app.on_message(filters.me & filters.command(['run2'], ['/','!','+','-','']))
 async def run2bot(client, message):
-  os.system('bot.py')
+  os.system('python3 bot.py')
   await client.send_message(message.chat.id, 'ران شد')
 
 app.run()
