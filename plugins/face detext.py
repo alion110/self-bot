@@ -1,7 +1,7 @@
 import requests
 from pyrogram import Client as app, filters
 import os
-USER_ID = 60b0cd03d11c8a6eaab02561
+USER_ID = '60b0cd03d11c8a6eaab02561'
 @app.on_message(filters.me & filters.reply & filters.command(['detect'], ['/','!','+','-','']))
 async def face_detector1(client, message):
     rp = message.reply_to_message
