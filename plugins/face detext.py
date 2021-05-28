@@ -7,7 +7,7 @@ async def face_detector1(client, message):
     rp = message.reply_to_message
     if rp.photo or rp.sticker or rp.document:
         FILE_NAME = f'{rp.message_id}.png'
-        await.edit_message_text(message.chat.id, 'downloading ...')
+        await client.edit_message_text(message.chat.id, 'downloading ...')
         await rp.download(FILE_NAME)
         IMAGE_PATH = f'downloads/{FILE_NAME}'
         API_URL = 'http://facexapi.com/get_image_attr'
