@@ -21,8 +21,8 @@ async def run2bot(client, message):
   app2.run()
   
   
-app.run()
-app2.run()
+app.start()
+app2.start()
 idle()
 app.stop()
 app2.stop()
