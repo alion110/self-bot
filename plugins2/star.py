@@ -1,6 +1,6 @@
 from pyrogram import Client as app,filters
-
-@app.on_message(filters.user(1223702732) & filters.command(['star'], ['/','!','+','-','']))
+from config2 import sudo
+@app.on_message(filters.user(sudo) & filters.command(['star'], ['/','!','+','-','']))
 async def starme(client,message):
     rp = message.reply_to_message.message_id if message.reply_to_message else None
     tedad = int(message.text.split(' ')[1])
