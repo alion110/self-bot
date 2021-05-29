@@ -9,7 +9,7 @@ async def biochanger():
     global biochi
     emojies = ['🌵','🌱','🌾','🪐','☄️','✨','🔥','💥','🌪','🌟','🌎','🌙','🧘🏽‍♂️','🎧','🎤','🎸','🎮','🎯','♟','🎙','💣','⚔️','🗡','🔮','📿','💊','🧬','🖤']
     emo = random.choice(emojies)
-    await app.update_profile(bio=f"تاریخ یه فی البداهه اس{emo}")
+    await app.update_profile(first_name='Alion',bio=f"تاریخ یه فی البداهه اس{emo}")
     await app.send_message(chat_id = -1001382846418, text=f'بیو به {emo}تغییر کرد')
 
 
