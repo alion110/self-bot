@@ -5,7 +5,7 @@ import random,asyncio
 
 
 biochi = True
-async def biochanger():
+'''async def biochanger():
     global biochi
     emojies = ['🌵','🌱','🌾','🪐','☄️','✨','🔥','💥','🌪','🌟','🌎','🌙','🧘🏽‍♂️','🎧','🎤','🎸','🎮','🎯','♟','🎙','💣','⚔️','🗡','🔮','📿','💊','🧬','🖤']
     emo = random.choice(emojies)
@@ -16,3 +16,4 @@ async def biochanger():
 scheduler = AsyncIOScheduler()
 scheduler.add_job(biochanger, "interval", seconds=60)
 scheduler.start()
+'''
