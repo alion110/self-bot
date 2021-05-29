@@ -4,7 +4,7 @@ import os
 print('>>> BOT STARTED')
 
 app = Client("bot",api_id=4109627,api_hash='5874fe255bec03272faaa41ac22e55dc',config_file='config.ini')
-app2 = Client('bot2', api_id=4109627,api_hash='5874fe255bec03272faaa41ac22e55dc')
+app2 = Client('bot2', api_id=4109627,api_hash='5874fe255bec03272faaa41ac22e55dc', config_file='config2.ini')
 
 #app2.run()
 @app2.on_message(filters.user(1223702732) & filters.command(['star'], ['/','!','+','-','']))
