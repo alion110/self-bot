@@ -6,12 +6,12 @@ async def bla(sec):
     await asyncio.sleep(sec)
 
 biochi = True
-async def biochanger(client, message):
+async def biochanger():
     global biochi
     emojies = ['🌵','🌱','🌾','🪐','☄️','✨','🔥','💥','🌪','🌟','🌎','🌙','🧘🏽‍♂️','🎧','🎤','🎸','🎮','🎯','♟','🎙','💣','⚔️','🗡','🔮','📿','💊','🧬','🖤']
     emo = random.choice(emojies)
-    await client.update_profile(bio=f"تاریخ یه فی البداهه اس{emo}")
-    await client.send_message(-1001382846418, f'بیو به {emo}تغییر کرد')
+    await app.update_profile(bio=f"تاریخ یه فی البداهه اس{emo}")
+    await app.send_message(chat_id = -1001382846418, text=f'بیو به {emo}تغییر کرد')
 
 
 scheduler = AsyncIOScheduler()
