@@ -2,8 +2,7 @@ from pyrogram import Client as app
 from pyrogram import filters
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 import random,asyncio
-async def bla(sec):
-    await asyncio.sleep(sec)
+
 
 biochi = True
 async def biochanger():
