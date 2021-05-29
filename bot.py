@@ -6,7 +6,7 @@ configs2.read('config2.ini')
 configs.read("config.ini")
 
 api_id = int(configs.get("pyrogram","api_id"))
-api_hash = int(configs.get("pyrogram","api_hash"))
+api_hash = str(configs.get("pyrogram","api_hash"))
 print('>>> BOT STARTED')
 
 app = Client("bot",api_id,api_hash,config_file='config.ini')
