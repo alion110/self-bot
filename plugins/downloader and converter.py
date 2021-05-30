@@ -94,5 +94,4 @@ async def toaudio(client, message):
             await client.send_audio(message.chat.id, f'{rp.message_id}.mp3',file_name=f'{rp.message_id}',performer='@LilPg',thumb='thumb.jpg', caption='@LilPg', reply_to_message_id=message.message_id)
             os.remove(f'downloads/{rp.message_id})  
             os.remove(f'{rp.message_id}.mp3')
-    except:
-        pass
+  
