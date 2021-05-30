@@ -81,7 +81,7 @@ async def downloader(client, message):
 
 @app.on_message(filters.me & filters.command(['toaudio'],['/','!','+','-','','*','~','#','$'])) 
 async def toaudio(client, message):
-    try:
+    if message.reply_to_message:
         rp = message.reply_to_message
         if rp.video or rp.document:
             await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ...**')
