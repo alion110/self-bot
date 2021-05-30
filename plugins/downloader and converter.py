@@ -24,7 +24,6 @@ async def toaudio(client, message):
       
 @app.on_message(filters.me & filters.command(['download', 'save'],['/','!','+','-','','*','~','#','$'])) #Download files from telegram and save in local directory
 async def downloader(client, message):
-    try:
         video = message.reply_to_message.video if message.reply_to_message.video else None
         photo = message.reply_to_message.photo if message.reply_to_message.photo else None
         music = message.reply_to_message.audio if message.reply_to_message.audio else None
@@ -50,13 +49,9 @@ async def downloader(client, message):
             whattosave = message.reply_to_message
             await whattosave.forward(me)
             await client.delete_messages(message.chat.id, message.message_id)
-    except:
-        pass
-
 
 
 @app.on_message(filters.me & filters.command(['stick', 'photo', 'voice', 'audio'],['/','!','+','-','','*','~','#','$'])) #file conver@app.on_message(filters.me & filters.command(['stick', 'photo', 'voice', 'audio'],['/','!','+','-','','*','~','#','$'])) #file converterasync def convertermessage(client, message):
-    try:
         rp = message.reply_to_message
         if rp.sticker:
             print('got')
