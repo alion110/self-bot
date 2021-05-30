@@ -17,7 +17,7 @@ async def toaudio(client, message):
             audio.write_audiofile(f'{rp.message_id}.mp3')
             await client.edit_message_text(message.chat.id, message.message_id, '**Uploading ...**')
             await client.send_audio(message.chat.id, f'{rp.message_id}.mp3',file_name=f'{rp.message_id}',performer='@LilPg',thumb='thumb.jpg', caption='@LilPg', reply_to_message_id=message.message_id)
-            os.remove(f'downloads/{rp.message_id})  
+            os.remove(f'downloads/{rp.message_id}.mp4')  
             os.remove(f'{rp.message_id}.mp3')
                       
                       
