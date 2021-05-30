@@ -1,4 +1,4 @@
-from pyrogram import Client as app, filters
+'''from pyrogram import Client as app, filters
 from pyrogram.errors import FloodWait
 import json
 import time
@@ -38,3 +38,4 @@ async def privater323(client, message):
             return
     except FloodWait as r:
         time.sleep(r.x)        
+'''
