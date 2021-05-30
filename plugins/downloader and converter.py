@@ -52,44 +52,36 @@ async def downloader(client, message):
 
 
 @app.on_message(filters.me & filters.command(['stick', 'photo', 'voice', 'audio'],['/','!','+','-','','*','~','#','$'])) #file conver@app.on_message(filters.me & filters.command(['stick', 'photo', 'voice', 'audio'],['/','!','+','-','','*','~','#','$'])) #file converterasync def convertermessage(client, message):
-        rp = message.reply_to_message
-        if rp.sticker:
-            print('got')
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ...**')
-            await rp.download('files1.png')
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloaded !**')
-            await client.send_photo(message.chat.id, 'downloads/files1.png', reply_to_message_id = rp.message_id)
-            await client.delete_messages(message.chat.id, message.message_id)
-            os.remove('downloads/files1.png')
-        if rp.photo or rp.document:
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ...**')
-            await rp.download('files2.webp')
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloaded !**')
-            print('downloaded')
-            await client.send_sticker(message.chat.id, 'downloads/files2.webp', reply_to_message_id = rp.message_id)
-            print('sent')
-            await client.delete_messages(message.chat.id, message.message_id)
-            os.remove('downloads/files2.webp')
-        if rp.voice:
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ...**')
-            await rp.download('files2.mp3')
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloaded !**')
-            print('downloaded')
-            await client.send_audio(message.chat.id, 'downloads/files2.mp3', reply_to_message_id = rp.message_id)
-            print('sent')
-            await client.delete_messages(message.chat.id, message.message_id)
-            os.remove('downloads/files2.mp3')
-        if rp.audio:
-            print('got')
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ...**')
-            await rp.download('files2.ogg')
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloaded !**')
-            print('downloaded')
-            await client.send_voice(message.chat.id, 'downloads/files2.ogg', reply_to_message_id = rp.message_id)
-            print('sent')
-            await client.delete_messages(message.chat.id, message.message_id)
-            os.remove('downloads/files2.ogg')
-    except:
-        pass
-
+async def converter1(client, message):
+    rp = message.reply_to_message
+    if rp.sticker: 
+        await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ...**')
+        await rp.download('files1.png')
+        await client.edit_message_text(message.chat.id, message.message_id, '**Downloaded !**')
+        await client.send_photo(message.chat.id, 'downloads/files1.png', reply_to_message_id = rp.message_id)
+        await client.delete_messages(message.chat.id, message.message_id)
+        os.remove('downloads/files1.png')
+    if rp.photo or rp.document:
+        await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ...**')
+        await rp.download('files2.webp')
+        await client.edit_message_text(message.chat.id, message.message_id, '**Downloaded !**')
+        await client.send_sticker(message.chat.id, 'downloads/files2.webp', reply_to_message_id = rp.message_id)
+        await client.delete_messages(message.chat.id, message.message_id)
+        os.remove('downloads/files2.webp')
+    if rp.voice:
+        
+        await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ...**')
+        await rp.download('files2.mp3')
+        await client.edit_message_text(message.chat.id, message.message_id, '**Downloaded !**')
+        await client.send_audio(message.chat.id, 'downloads/files2.mp3', reply_to_message_id = rp.message_id)
+        await client.delete_messages(message.chat.id, message.message_id)
+        os.remove('downloads/files2.mp3')
+    if rp.audio:
+        await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ...**')
+        await rp.download('files2.ogg')
+        await client.edit_message_text(message.chat.id, message.message_id, '**Downloaded !**')
+        await client.send_voice(message.chat.id, 'downloads/files2.ogg', reply_to_message_id = rp.message_id)
+        await client.delete_messages(message.chat.id, message.message_id)
+        os.remove('downloads/files2.ogg')
+ 
 
