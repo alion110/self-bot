@@ -12,7 +12,7 @@ async def toaudio(client, message):
             await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ...**')
             await rp.download(f'{rp.message_id}.mp4')
             await client.edit_message_text(message.chat.id, message.message_id, '**Processing ...**')
-            video = moviepy.editor.VideoFileClip(f'downloads/{rp.message_id}}.mp4')
+            video = moviepy.editor.VideoFileClip(f'downloads/{rp.message_id}.mp4')
             audio = video.audio
             audio.write_audiofile(f'{rp.message_id}.mp3')
             await client.edit_message_text(message.chat.id, message.message_id, '**Uploading ...**')
