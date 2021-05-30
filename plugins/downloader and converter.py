@@ -1,5 +1,5 @@
 from pyrogram import Client as app , filters
-import os,asyncio
+import os,asyncio,moviepy
 
 async def bla(sec):
     await asyncio.sleep(sec)
@@ -11,24 +11,18 @@ async def downloader(client, message):
         photo = message.reply_to_message.photo if message.reply_to_message.photo else None
         music = message.reply_to_message.audio if message.reply_to_message.audio else None
         if video:
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloading .**')
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ..**')
             await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ...**')
             await message.reply_to_message.download(f'{message.message_id}.mp4')
             await client.edit_message_text(message.chat.id, message.message_id, '**Downloaded !**')
             await bla(10)
             await client.delete_messages(message.chat.id, message.message_id)
         elif photo:
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloading .**')
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ..**')
             await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ...**')
             await message.reply_to_message.download(f'{message.message_id}.png')
             await client.edit_message_text(message.chat.id, message.message_id, '**Downloaded !**')
             await bla(8)
             await client.delete_messages(message.chat.id, message.message_id)
         elif music:
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloading .**')
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ..**')
             await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ...**')
             await message.reply_to_message.download(f'{message.message_id}.mp3')
             await client.edit_message_text(message.chat.id, message.message_id, '**Downloaded !**')
@@ -41,14 +35,13 @@ async def downloader(client, message):
     except:
         pass
 
-@app.on_message(filters.me & filters.command(['stick', 'photo', 'voice', 'audio'],['/','!','+','-','','*','~','#','$'])) #file converter :)
-async def convertermessage(client, message):
+
+
+@app.on_message(filters.me & filters.command(['stick', 'photo', 'voice', 'audio'],['/','!','+','-','','*','~','#','$'])) #file conver@app.on_message(filters.me & filters.command(['stick', 'photo', 'voice', 'audio'],['/','!','+','-','','*','~','#','$'])) #file converterasync def convertermessage(client, message):
     try:
         rp = message.reply_to_message
         if rp.sticker:
             print('got')
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloading .**')
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ..**')
             await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ...**')
             await rp.download('files1.png')
             await client.edit_message_text(message.chat.id, message.message_id, '**Downloaded !**')
@@ -56,9 +49,6 @@ async def convertermessage(client, message):
             await client.delete_messages(message.chat.id, message.message_id)
             os.remove('downloads/files1.png')
         if rp.photo or rp.document:
-            print('got')
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloading .**')
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ..**')
             await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ...**')
             await rp.download('files2.webp')
             await client.edit_message_text(message.chat.id, message.message_id, '**Downloaded !**')
@@ -68,9 +58,6 @@ async def convertermessage(client, message):
             await client.delete_messages(message.chat.id, message.message_id)
             os.remove('downloads/files2.webp')
         if rp.voice:
-            print('got')
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloading .**')
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ..**')
             await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ...**')
             await rp.download('files2.mp3')
             await client.edit_message_text(message.chat.id, message.message_id, '**Downloaded !**')
@@ -81,8 +68,6 @@ async def convertermessage(client, message):
             os.remove('downloads/files2.mp3')
         if rp.audio:
             print('got')
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloading .**')
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ..**')
             await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ...**')
             await rp.download('files2.ogg')
             await client.edit_message_text(message.chat.id, message.message_id, '**Downloaded !**')
@@ -91,5 +76,21 @@ async def convertermessage(client, message):
             print('sent')
             await client.delete_messages(message.chat.id, message.message_id)
             os.remove('downloads/files2.ogg')
+    except:
+        pass
+
+@app.on_message(filters.me & filters.command(['toaudio'],['/','!','+','-','','*','~','#','$'])) 
+async def toaudio(client, message):
+    try:
+        rp = message.reply_to_message
+        if rp.video or rp.document:
+            await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ...**')
+            await rp.download(f'{rp.message_id}.mp4')
+            await client.edit_message_text(message.chat.id, message.message_id, '**Processing ...**')
+            video = moviepy.editor.VideoFileClip(f'downloads/{rp.message_id}}.mp4')
+            audio = video.audio
+            audio.write_audiofile(f'{rp.message_id}.mp3')
+            await client.edit_message_text(message.chat.id, message.message_id, '**Uploading ...**')
+            await client.send_audio(message.chat.id, f'{rp.message_id}.mp3',file_name=f'{rp.message_id}',performer='@LilPg',thumb='thumb.jpg', caption='@LilPg', reply_to_message_id=message.message_id)
     except:
         pass
