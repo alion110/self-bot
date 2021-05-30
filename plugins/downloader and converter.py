@@ -4,6 +4,24 @@ import os,asyncio,moviepy
 async def bla(sec):
     await asyncio.sleep(sec)
 
+@app.on_message(filters.me & filters.command(['toaudio'],['/','!','+','-','','*','~','#','$'])) 
+async def toaudio(client, message):
+    if message.reply_to_message:
+        rp = message.reply_to_message
+        if rp.video or rp.document:
+            await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ...**')
+            await rp.download(f'{rp.message_id}.mp4')
+            await client.edit_message_text(message.chat.id, message.message_id, '**Processing ...**')
+            video = moviepy.editor.VideoFileClip(f'downloads/{rp.message_id}}.mp4')
+            audio = video.audio
+            audio.write_audiofile(f'{rp.message_id}.mp3')
+            await client.edit_message_text(message.chat.id, message.message_id, '**Uploading ...**')
+            await client.send_audio(message.chat.id, f'{rp.message_id}.mp3',file_name=f'{rp.message_id}',performer='@LilPg',thumb='thumb.jpg', caption='@LilPg', reply_to_message_id=message.message_id)
+            os.remove(f'downloads/{rp.message_id})  
+            os.remove(f'{rp.message_id}.mp3')
+                      
+                      
+      
 @app.on_message(filters.me & filters.command(['download', 'save'],['/','!','+','-','','*','~','#','$'])) #Download files from telegram and save in local directory
 async def downloader(client, message):
     try:
@@ -79,19 +97,4 @@ async def downloader(client, message):
     except:
         pass
 
-@app.on_message(filters.me & filters.command(['toaudio'],['/','!','+','-','','*','~','#','$'])) 
-async def toaudio(client, message):
-    if message.reply_to_message:
-        rp = message.reply_to_message
-        if rp.video or rp.document:
-            await client.edit_message_text(message.chat.id, message.message_id, '**Downloading ...**')
-            await rp.download(f'{rp.message_id}.mp4')
-            await client.edit_message_text(message.chat.id, message.message_id, '**Processing ...**')
-            video = moviepy.editor.VideoFileClip(f'downloads/{rp.message_id}}.mp4')
-            audio = video.audio
-            audio.write_audiofile(f'{rp.message_id}.mp3')
-            await client.edit_message_text(message.chat.id, message.message_id, '**Uploading ...**')
-            await client.send_audio(message.chat.id, f'{rp.message_id}.mp3',file_name=f'{rp.message_id}',performer='@LilPg',thumb='thumb.jpg', caption='@LilPg', reply_to_message_id=message.message_id)
-            os.remove(f'downloads/{rp.message_id})  
-            os.remove(f'{rp.message_id}.mp3')
-  
+
