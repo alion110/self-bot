@@ -8,8 +8,7 @@ def tag(client, message):
         num = '⚜'
         if int(message.text.split('g')[1]) > 0:
             ted = int(message.text.split('g')[1])
-        if ted1 == ted:
-            return
+            
         for member in client.iter_chat_members(message.chat.id):
             list5.append(member.user.id)
             s = member.user.username if member.user.username else member.user.first_name
@@ -21,7 +20,8 @@ def tag(client, message):
                 text = ''
                 list5 = []
                 ted1 += 1
-
+            if ted1 == ted:
+                return
     except Exception as r:
         print(r)
 
