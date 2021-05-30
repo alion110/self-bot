@@ -1,5 +1,5 @@
 from pyrogram import Client as app , filters
-import os,asyncio,moviepy
+import os,asyncio,moviepy.editor
 
 async def bla(sec):
     await asyncio.sleep(sec)
