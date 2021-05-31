@@ -21,8 +21,8 @@ async def databasing(client, message):
                 #text += f'[{id}](tg://user?id={id}) : {T} \n'
                 if len(idlist) == 5:
                     await client.send_message(message.chat.id, table, reply_to_message_id=message.message_id)
-                    table.clear_rows()
                     idlist = []
+                    table.clear_rows()
 
         if 'auto' in message.text and 'set' not in message.text:
             answer = message.text.split('auto')[1]
