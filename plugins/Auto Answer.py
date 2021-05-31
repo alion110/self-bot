@@ -11,13 +11,17 @@ async def databasing(client, message):
             data = json.load(jsonfile)
         if 'answers' in message.text:
             table = PrettyTable()
+            idlist = []
             table.field_names =['فرد', 'جواب']
             text = 'لیست جواب خودکار : \n'
             for id in data['autoanswer']:
+                idlist.append(id)
                 T = data["autoanswer"][id]
                 table.add_row([f'[{id}](tg://user?id={id})', T])
                 #text += f'[{id}](tg://user?id={id}) : {T} \n'
-            await client.send_message(message.chat.id, table, reply_to_message_id=message.message_id)
+                if len(idlist) == 5:
+                    idlist = []
+                    await client.send_message(message.chat.id, table, reply_to_message_id=message.message_id)
 
         if 'auto' in message.text and 'set' not in message.text:
             answer = message.text.split('auto')[1]
