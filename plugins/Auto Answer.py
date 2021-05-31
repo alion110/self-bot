@@ -1,5 +1,6 @@
 from pyrogram import Client as app , filters
 import json, time,asyncio
+from prettytable import PrettyTable
 last = time.time()
 def bla(sec):
     asyncio.sleep(sec)
@@ -9,12 +10,15 @@ async def databasing(client, message):
         with open('users.json', 'r', encoding='utf8') as jsonfile:
             data = json.load(jsonfile)
         if 'answers' in message.text:
+            table = PrettyTable()
+            table.field_names =['فرد', 'جواب']
             text = 'لیست جواب خودکار : \n'
             for id in data['autoanswer']:
                 T = data["autoanswer"][id]
-                text += f'[{id}](tg://user?id={id}) : {T} \n'
-            await client.send_message(message.chat.id, text, reply_to_message_id=message.message_id)
-    
+                table.add_row([f'[{id}](tg://user?id={id})', T])
+                #text += f'[{id}](tg://user?id={id}) : {T} \n'
+            await client.send_message(message.chat.id, table, reply_to_message_id=message.message_id)
+
         if 'auto' in message.text and 'set' not in message.text:
             answer = message.text.split('auto')[1]
             for i in data["autoanswer"]:
@@ -99,5 +103,3 @@ async def mentionedme(client, message):
         last = time.time()
     except Exception as t:
         print(t)
-
-
