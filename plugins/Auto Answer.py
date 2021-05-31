@@ -19,7 +19,7 @@ async def databasing(client, message):
                 T = data["autoanswer"][id]
                 table.add_row([f'[{id}](tg://user?id={id})', T])
                 #text += f'[{id}](tg://user?id={id}) : {T} \n'
-                if len(idlist) == 5:
+                if len(idlist) == 15:
                     await client.send_message(message.chat.id, table, reply_to_message_id=message.message_id)
                     idlist = []
                     table.clear_rows()
