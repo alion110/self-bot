@@ -20,6 +20,7 @@ async def databasing(client, message):
                 table.add_row([f'[{id}](tg://user?id={id})', T])
                 #text += f'[{id}](tg://user?id={id}) : {T} \n'
                 if len(idlist) == 5:
+                    table.clear_rows()
                     idlist = []
                     await client.send_message(message.chat.id, table, reply_to_message_id=message.message_id)
 
