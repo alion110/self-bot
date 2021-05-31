@@ -14,7 +14,7 @@ def tag(client, message):
             s = member.user.username if member.user.username else member.user.first_name
             text += f'{num}:[{s}](tg://user?id={member.user.id}) \n'
 
-            if len(list5) ==15:
+            if len(list5) == 5:
                 text += '---------------'
                 client.send_message(message.chat.id, text)
                 text = ''
