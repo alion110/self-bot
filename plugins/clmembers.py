@@ -14,4 +14,5 @@ def clmember(client, message):
         client.send_message(message.chat.id, 'Done :)')
 
     except Exception as r:
+        print(r)
         client.send_message(message.chat.id, f'```~ERROR : ``` {r}')
