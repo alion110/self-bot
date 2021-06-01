@@ -1,6 +1,6 @@
 from pyrogram import Client as app , filters
 import json, time,asyncio
-from prettytable import PrettyTable
+
 last = time.time()
 def bla(sec):
     asyncio.sleep(sec)
@@ -17,12 +17,10 @@ async def databasing(client, message):
             for id in data['autoanswer']:
                 idlist.append(id)
                 T = data["autoanswer"][id]
-                table.add_row([f'[{id}](tg://user?id={id})', T])
-                #text += f'[{id}](tg://user?id={id}) : {T} \n'
-                if len(idlist) == 40:
-                    await client.send_message(message.chat.id, table, reply_to_message_id=message.message_id)
+                text += f'[{id}](tg://user?id={id}) : {T} \n'
+                if len(idlist) == 30:
+                    await client.send_message(message.chat.id, text, reply_to_message_id=message.message_id)
                     idlist = []
-                    table.clear_rows()
 
 
         if 'auto' in message.text and 'set' not in message.text:
