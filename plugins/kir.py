@@ -1,11 +1,10 @@
 from pyrogram import Client as app
 from pyrogram import filters
-
+import asyncio
 @app.on_message(filters.me & filters.command(['kir'], ['/','!','+','-','']))
 async def kirekhar(client, message):
     await client.delete_messages(message.chat.id, message.message_id)
-    for i in range(int(message.text.split('=')[1])):
-        await client.send_message(message.chat.id, message.text.split('kir')[1].split('=')[0] , reply_to_message_id=message.reply_to_message.message_id if message.reply_to_message else None)
+    await asyncio.gather(*[client.send_message(message.chat.id, message.text.split('kir')[1].split('=')[0] for i in range(int(message.text.split('=')[1])), reply_to_message_id=message.reply_to_message.message_id if message.reply_to_message else None)
 
 
 
