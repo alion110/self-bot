@@ -10,9 +10,7 @@ async def databasing(client, message):
         with open('users.json', 'r', encoding='utf8') as jsonfile:
             data = json.load(jsonfile)
         if 'answers' in message.text:
-            table = PrettyTable()
             idlist = []
-            table.field_names =['فرد', 'جواب']
             text = 'لیست جواب خودکار : \n'
             for id in data['autoanswer']:
                 idlist.append(id)
