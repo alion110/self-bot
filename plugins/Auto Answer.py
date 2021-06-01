@@ -80,9 +80,9 @@ async def mentionedme(client, message):
     try:
         rp = message.reply_to_message
         if rp:
-            if rp.from_user.id == 1223702732 and not '@' in message.text:
+            if rp.from_user.id == 1223702732 and not '@LilPG' in message.text:
                 return
-        if time.time() - last < 10:
+        if time.time() - last < 20:
             return
         default = "حق با توعه"
         print('hey')
@@ -98,7 +98,7 @@ async def mentionedme(client, message):
                 print('it exists...')
                 print('getting from db')
                 await client.send_message(message.chat.id, data['autoanswer'][str(userid)], reply_to_message_id=message.message_id)
-                await bla(20)
+                await bla(60)
                 return
         await client.send_message(message.chat.id, default, reply_to_message_id=message.message_id)
         await bla(20)
