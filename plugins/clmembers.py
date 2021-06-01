@@ -8,8 +8,9 @@ def clmember(client, message):
         client.edit_message_text(message.chat.id,message.message_id ,'**Deleting ...**')
         for member in client.iter_chat_members(message.chat.id):
             if member.status in can_not_remove:
-                return
-            message.chat.kick_member(member.user.id)
+                pass
+            else:
+                message.chat.kick_member(member.user.id)
         client.delete_messages(message.chat.id, message.message_id)
         client.send_message(message.chat.id, 'Done :)')
 
