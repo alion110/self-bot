@@ -13,5 +13,6 @@ async def auto_private_answer(client, message):
             await client.send_message(1223702732, f'You Have a new message from [{message.from_user.first_name}](tg://user?id={message.from_user.id}) \n text : {message.text}')
             list.append(message.from_user.id)
             asyncio.sleep(300)
+            list.remove(message.from_user.id)
 
         
