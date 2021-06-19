@@ -14,11 +14,10 @@ async def auto_private_answer(client, message):
         if not str(message.from_user.id) in data['pv'] and not message.from_user.id == 1223702732:
             await client.send_message(message.from_user.id, text)
             await client.send_message(1223702732, f'You Have a new message from [{message.from_user.first_name}](tg://user?id={message.from_user.id})\ntext : {message.text}')
-            list.append(message.from_user.id)
             data['pv'].append(str(message.from_user.id))
             with open('users.json', 'w', encoding='utf-8') as jsonfile:
                 json.dump(data, jsonfile)
-            asyncio.sleep(300)
+            asyncio.sleep(3000)
             data['pv'].remove(str(message.from_user.id))
             with open('users.json', 'w') as jsonfile:
                 json.dump(data, jsonfile)           
