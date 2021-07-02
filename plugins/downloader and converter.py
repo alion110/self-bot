@@ -86,4 +86,27 @@ async def converter1(client, message):
         await client.delete_messages(message.chat.id, message.message_id)
         os.remove('downloads/files2.ogg')
  
+@app.on_message(filters.me & filters.command(['help'],['/','!','+','-','','*','~','#','$'])) 
+async def helperrrr(client,message):
+    text = '''لیست پلاگین ها: 
+پاسخ خودکار :  auto-khar-delkhar-answers
+کامنت خودکار: اتوماتیکه
+حذف بکگراند : rbg
+انیمیشنا : brain-load
+پاکسازی گروه : clean
+حذف ممبرا : clm
+ شمارش : count 
+حذف پیامای ممبرا : dell-del
+دانلود خودکار عکس و ویدیو تایم دار 
+دانلود و تبدیل فایل : download-stick-photo-voice-audio
+گرفتن فایل ایدی: msg-fid
+پینگ و ایدی : ping-id
+پردازش تصویر : blur-gray-resize-rotate
+اپلود دیتابیس : ujson
+اسپمر : sp
+تگ خودکار : tag
+ترتیب رو خودکار 
+تنظیم پروفایل : setprof'''
+    await client.send_message(message.chat.id, text1)
+
 
