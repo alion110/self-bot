@@ -6,7 +6,7 @@ api_id = int(configs.get("pyrogram","api_id"))
 api_hash = str(configs.get("pyrogram","api_hash"))
 print('>>> BOT STARTED')
 
-app = Client('app',api_id,api_hash,config_file='config.ini')
+app = Client('app2',api_id,api_hash,config_file='config.ini')
 
 app.run()
 print('\n>>> BOT STOPPED')
