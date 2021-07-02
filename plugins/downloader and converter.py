@@ -88,7 +88,7 @@ async def converter1(client, message):
  
 @app.on_message(filters.me & filters.command(['help'],['/','!','+','-','','*','~','#','$'])) 
 async def helperrrr(client,message):
-    text = '''لیست پلاگین ها: 
+    text1 = '''لیست پلاگین ها: 
 پاسخ خودکار :  auto-khar-delkhar-answers
 کامنت خودکار: اتوماتیکه
 حذف بکگراند : rbg
