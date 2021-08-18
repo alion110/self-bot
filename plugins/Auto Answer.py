@@ -80,7 +80,7 @@ async def mentionedme(client, message):
     try:
         rp = message.reply_to_message
         if rp:
-            if rp.from_user.id == 1223702732 and not '@LilPG' in message.text:
+            if rp.from_user.id == 1836788438 and not '@RealAlion' in message.text:
                 return
         if time.time() - last < 20:
             return
